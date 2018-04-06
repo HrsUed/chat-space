@@ -6,6 +6,7 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
+
 2.3.1p112
 
 * System dependencies
@@ -22,7 +23,18 @@ Things you may want to cover:
 
 * Deployment instructions
 
-## Database
+## データベース設計
+
+### テーブル一覧
+
+以下のテーブルを定義。
+
+|Table Name|Abstracts|
+|----------|---------|
+|users|ユーザ情報を格納する|
+|groups|チャットグループ情報を格納する|
+|members|usersテーブルとgroupsテーブルの中間テーブル。どのユーザがどのチャットグループに属しているかの情報を格納する。|
+|messages|チャットメッセージを格納するテーブル|
 
 ### usersテーブル
 
@@ -30,6 +42,7 @@ Things you may want to cover:
 |------|----|-------|
 |id|integer|Primary Key|
 |name|string|Not Null|
+|email|string|Not Null, Unique|
 
 #### アソシエーション
 
