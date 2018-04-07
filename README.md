@@ -6,6 +6,7 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
+2.3.1p112
 
 2.3.1p112
 
@@ -36,6 +37,7 @@ Things you may want to cover:
 |members|usersテーブルとgroupsテーブルの中間テーブル。どのユーザがどのチャットグループに属しているかの情報を格納する。|
 |messages|チャットメッセージを格納するテーブル|
 
+
 ### usersテーブル
 
 |Column|Type|Options|
@@ -43,6 +45,7 @@ Things you may want to cover:
 |id|integer|Primary Key|
 |name|string|Not Null|
 |email|string|Not Null, Unique|
+
 
 #### アソシエーション
 
