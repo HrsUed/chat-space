@@ -1,0 +1,62 @@
+// @import "./variables";
+
+.wrapper {
+  height: 100%;
+
+  .side-bar {
+    width: $side-bar-width;
+    margin: 0 20px;
+    color: #ffffff;
+    float: left;
+
+    .header {
+      height: 100px;
+      background-color: #253141;
+
+      .header__name {
+        font-size: 16px;
+        font-style: bold;
+      }
+    }
+
+    .groups {
+      background-color: #2f3e51;
+    }
+
+  }
+
+  .chat {
+    width: calc(100vw - $side-bar-width);
+    background-color: #aaaaaa;
+
+    .header {
+      height: 100px;
+      background-color: #FFEEEE;
+
+      .header-left {
+        float: left;
+      }
+
+      .header-right {
+        float: right;
+
+        .header-right__btn {
+          line-height: 40px;
+          border: solid 1px #38aef0;
+          margin-top: 20px;
+          padding: 0 20px;
+        }
+      }
+    }
+
+    .messages {
+      background-color: #EEFFEE;
+    }
+
+    .form {
+      height: 90px;
+      background-color: #EEEEFF;
+    }
+
+  }
+}
