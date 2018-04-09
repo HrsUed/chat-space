@@ -1,1 +1,12 @@
 $side-bar-width: 300px;
+$header-height: 100px;
+$form-height: 90px;
+$accent-color: #38aef0;
+
+@mixin a_color($color: #ffffff) {
+  a {
+    &:link { color: $color; }
+    &:visited { color: $color; }
+    &:active { color: $color; }
+  }
+}
