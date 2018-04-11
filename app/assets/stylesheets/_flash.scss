@@ -1,0 +1,12 @@
+.alert {
+  text-align: center;
+  color: #ffffff;
+
+  &--success {
+    background-color: $flash-notice-color;
+  }
+
+  &--danger {
+    background-color: $flash-danger-color;
+  }
+}
