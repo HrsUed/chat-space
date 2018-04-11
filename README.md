@@ -50,6 +50,7 @@ Things you may want to cover:
 #### アソシエーション
 
 - has_many: group_user
+- has_many: groups, through: group_users
 - has_many: messages
 
 ### groupsテーブル
@@ -62,6 +63,7 @@ Things you may want to cover:
 #### アソシエーション
 
 - has_many: group_user
+- has_many: users, through: group_users
 - has_many: messages
 
 ### group_userテーブル
