@@ -4,8 +4,8 @@
       .header__name
         = current_user.name + "さん"
       %ul.header__list
-        = content_tag(:li, link_to(fa_icon("edit", class: "icon"), "/"), class: "list")
-        = content_tag(:li, link_to(fa_icon("cog", class: "icon"), "/"), class: "list")
+        = content_tag(:li, link_to(fa_icon("edit", class: "icon"), root_path), class: "list")
+        = content_tag(:li, link_to(fa_icon("cog", class: "icon"), edit_user_path(current_user)), class: "list")
 
     .groups
       = render partial: "group"
@@ -20,7 +20,7 @@
             Member: テストさん、サンプルさん
       .header-right
         .header-right__btn
-          = link_to "Edit", "/"
+          = link_to "Edit", root_path
     .messages
       = render partial: "message"
 
