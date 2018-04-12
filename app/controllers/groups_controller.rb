@@ -25,7 +25,7 @@ class GroupsController < ApplicationController
         end
       end
 
-      redirect_to :root
+      redirect_to :root, notice: "グループ#{@group.name}を作成しました。"
     else
       render :new
     end
