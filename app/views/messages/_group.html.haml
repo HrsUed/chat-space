@@ -1,24 +1,6 @@
-.group
-  .group__name
-    test
-  .group__latest-message
-    hi
-
-.group
-  .group__name
-    test
-  .group__latest-message
-    hi
-
-.group
-  .group__name
-    test
-  .group__latest-message
-    hi
-
-.group
-  .group__name
-    test
-  .group__latest-message
-    hi
-
+- current_user.groups.each do |group|
+  .group
+    .group__name
+      = group.name
+    .group__latest-message
+      hi
