@@ -34,7 +34,7 @@ Things you may want to cover:
 |----------|---------|
 |users|ユーザ情報を格納する|
 |groups|チャットグループ情報を格納する|
-|members|usersテーブルとgroupsテーブルの中間テーブル。どのユーザがどのチャットグループに属しているかの情報を格納する。|
+|group_user|usersテーブルとgroupsテーブルの中間テーブル。どのユーザがどのチャットグループに属しているかの情報を格納する。|
 |messages|チャットメッセージを格納するテーブル|
 
 
@@ -49,7 +49,8 @@ Things you may want to cover:
 
 #### アソシエーション
 
-- has_many: members
+- has_many: group_user
+- has_many: groups, through: group_users
 - has_many: messages
 
 ### groupsテーブル
@@ -61,10 +62,11 @@ Things you may want to cover:
 
 #### アソシエーション
 
-- has_many: menbers
+- has_many: group_user
+- has_many: users, through: group_users
 - has_many: messages
 
-### membersテーブル
+### group_userテーブル
 
 |Column|Type|Options|
 |------|----|-------|

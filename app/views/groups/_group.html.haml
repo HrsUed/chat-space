@@ -1,0 +1,5 @@
+- current_user.groups.each do |group|
+  .group
+    = link_to group.name, root_path, class: "group__name"
+    .group__latest-message
+      hi

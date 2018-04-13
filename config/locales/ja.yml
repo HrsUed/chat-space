@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    errors:
+      models:
+        group:
+          attributes:
+            name:
+              blank: "グループ名を入力してください。"
+              taken: "そのグループ名は既に登録されています。他のグループ名を入力してください。"
