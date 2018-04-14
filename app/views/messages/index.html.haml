@@ -15,9 +15,10 @@
     .messages
       = render partial: "message"
 
-    %form.form
-      %input.form__text{type: "text", placeholder: "type a message"}
-      %label{for: "form__input-image"}
-        = fa_icon("image lg", class: "icon")
-        %input#form__input-image{type: "file"}
-      %input.form__submit{type: "submit", value: "Send"}
+    .form
+      = form_for :message do |f|
+        = f.text_field :content, class: "form__text", placeholder: "type a message"
+        = f.label :image do
+          = fa_icon("image lg", class: "icon")
+          = f.file_field :image, class: "form__input-image"
+        = f.submit "Send", class: "form__submit"
