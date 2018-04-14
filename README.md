@@ -84,7 +84,8 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |id|integer|Primary Key|
-|body|text|Not Null|
+|content|text|Not Null|
+|image|string||
 |group_id|integer|Foreign Key|
 |user_id|integer|Foreign Key|
 
