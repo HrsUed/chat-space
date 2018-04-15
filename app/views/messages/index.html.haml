@@ -1,0 +1,24 @@
+.wrapper
+  = render partial: "shared/sidebar"
+
+  .chat
+    .header
+      .header-left
+        .group
+          .group__name
+            = @group.name
+          .group__members-list
+            Member: #{@members.join("、")}
+      .header-right
+        .header-right__btn
+          = link_to "Edit", edit_group_path(@group)
+    .messages
+      = render partial: "message"
+
+    .form
+      = form_for :message do |f|
+        = f.text_field :content, class: "form__text", placeholder: "type a message"
+        = f.label :image do
+          = fa_icon("image lg", class: "icon")
+          = f.file_field :image, class: "form__input-image"
+        = f.submit "Send", class: "form__submit"

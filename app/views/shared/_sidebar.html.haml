@@ -1,0 +1,10 @@
+.side-bar
+  .header
+    .header__name
+      = current_user.name + "さん"
+    %ul.header__list
+      = content_tag(:li, link_to(fa_icon("edit", class: "icon"), new_group_path), class: "list")
+      = content_tag(:li, link_to(fa_icon("cog", class: "icon"), edit_user_path(current_user)), class: "list")
+
+  .groups
+    = render partial: "shared/group"
