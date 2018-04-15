@@ -3,15 +3,14 @@ class MessagesController < ApplicationController
 
   def index
     @messages = @group.messages
-    @members = @group.users.inject([]) { |members, user| members << user.name }
   end
 
   def create
-    @messages = @group.messages
-    if @messages << Message.new(message_params)
+    @message = Message.new(message_params)
+    if @message.save
       redirect_to group_messages_path(@group)
     else
-      render :index
+      redirect_to group_messages_path(@group), alert: "メッセージを入力してください。"
     end
   end
 
@@ -19,6 +18,7 @@ class MessagesController < ApplicationController
 
   def set_group
     @group = Group.find(params[:group_id])
+    @members = @group.users.inject([]) { |members, user| members << user.name }
   end
 
   def message_params
