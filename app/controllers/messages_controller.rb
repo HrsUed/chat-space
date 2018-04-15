@@ -2,11 +2,14 @@ class MessagesController < ApplicationController
   before_action :set_group, only: [:index, :create]
 
   def index
-    @messages = @group.messages
+    # N+1問題を避けるためにincludes
+    # どの程度解消されるのか試してみたい
+    @messages = @group.messages.includes(:user)
   end
 
   def create
-    @message = Message.new(message_params)
+    # @message = Message.new(~)とするとgroupsへのSELECT文が余計に入るのでこちらの方が性能いい
+    @message = @group.messages.new(message_params)
     if @message.save
       redirect_to group_messages_path(@group)
     else
