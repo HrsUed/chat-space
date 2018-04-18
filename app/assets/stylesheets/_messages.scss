@@ -99,6 +99,7 @@
       height: calc(100vh - #{$header-height} - #{$form-height});
       padding: 0 40px;
       background-color: #fafafa;
+      overflow: scroll;
 
       .message-header {
         padding-top: 40px;
