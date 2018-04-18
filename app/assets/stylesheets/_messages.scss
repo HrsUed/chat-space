@@ -15,8 +15,10 @@
 
       &__name {
         display: inline-block;
+        max-width: calc(100% - 40px);
         height: 100%;
         font-weight: bold;
+        @include set_ellipsis;
       }
 
       &__list {
@@ -49,6 +51,8 @@
 
         &__latest-message {
           font-size: 11px;
+          // 以下はサイドバーの幅を超えて表示される文字列を省略して「...」で表示するスタイル
+          @include set_ellipsis;
         }
       }
     }
@@ -65,6 +69,7 @@
       border-bottom: solid 1px #eeeeee;
 
       .header-left {
+        max-width: calc(100% - 73px);
         float: left;
 
         .group {
@@ -73,11 +78,13 @@
             margin-bottom: 15px;
             font-size: 20px;
             color: #333333;
+            @include set_ellipsis;
           }
 
           &__members-list {
             font-size: 12px;
             color: #999999;
+            @include set_ellipsis;
           }
         }
       }
@@ -124,6 +131,11 @@
 
         &__content {
           font-size: 14px;
+        }
+
+        &__image {
+          max-width: 300px;
+          max-height: 300px;
         }
       }
     }
