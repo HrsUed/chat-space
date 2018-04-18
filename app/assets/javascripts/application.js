@@ -14,3 +14,16 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+// 画像サイズも考慮してスクロールするためにreadyではなくonload方式で記述
+$(window).on("load", function() {
+  var targetSelector = $(".messages");
+  var scrollPosition = targetSelector.get(0).scrollHeight;
+  targetSelector.scrollTop(scrollPosition);
+  // targetSelector.animate({scrollTop: scrollPosition}, 'fast');
+
+  targetSelector.on("scroll", function() {
+    var scr_cnt = $(targetSelector).scrollTop();
+    $(".scrollQty").html(scr_cnt);
+  });
+});
