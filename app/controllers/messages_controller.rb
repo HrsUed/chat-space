@@ -2,18 +2,28 @@ class MessagesController < ApplicationController
   before_action :set_group, only: [:index, :create]
 
   def index
+    # indexビューでform_forヘルパーの引数に使用する場合に定義が必要
+    # @message = Message.new
+
     # N+1問題を避けるためにincludes
     # どの程度解消されるのか試してみたい
     @messages = @group.messages.includes(:user)
   end
 
   def create
-    # @message = Message.new(~)とするとgroupsへのSELECT文が余計に入るのでこちらの方が性能いい
+    # 以下のようにするとgroupsへのSELECT文が余計に入るので以下の記載の方が性能いい
+    # また、この時はmessage_paramsにgroup_idが抜けるので、これもハッシュにしてマージする必要がある。
+    # @message = Message.new(message_params)
+
     @message = @group.messages.new(message_params)
     if @message.save
-      redirect_to group_messages_path(@group)
+      redirect_to group_messages_path(@group), notice: "メッセージが送信されました。"
     else
-      redirect_to group_messages_path(@group), alert: "メッセージを入力してください。"
+      @messages = @group.messages.includes(:user)
+      flash.now[:alert] = "メッセージを入力してください。"
+      render :index
+      # 以下の記載でも良いが、サーバ通信が余計に発生するので、できればrenderで済ませたい。
+      # redirect_to group_messages_path(@group), alert: "メッセージを入力してください。"
     end
   end
 
@@ -25,6 +35,9 @@ class MessagesController < ApplicationController
   end
 
   def message_params
-    params.require(:message).permit(:content, :image).merge({group_id: params[:group_id], user_id: current_user.id})
+    params.require(:message).permit(:content, :image).merge(user_id: current_user.id)
+    # createアクションでMessage.newとしてしまうとグループIDを取得できなくなるため、以下の通りハッシュにしてマージする必要が生じる。
+    # せっかくアソシエーションを設定しているので、このような処理は非常に冗長であるために不採用。
+    # params.require(:message).permit(:content, :image).merge({group_id: params[:group_id], user_id: current_user.id})
   end
 end
