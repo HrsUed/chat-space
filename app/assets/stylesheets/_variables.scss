@@ -13,3 +13,9 @@ $flash-danger-color: rgb(229, 95, 41);
     &:active { color: $color; }
   }
 }
+
+@mixin set_ellipsis() {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

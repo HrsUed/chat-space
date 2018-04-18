@@ -2,4 +2,4 @@
   .group
     = link_to group.name, group_messages_path(group), class: "group__name"
     .group__latest-message
-      hi
+      = group.get_latest_message
