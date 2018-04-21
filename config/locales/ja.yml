@@ -7,3 +7,13 @@ ja:
             name:
               blank: "グループ名を入力してください。"
               taken: "そのグループ名は既に登録されています。他のグループ名を入力してください。"
+        message:
+          attributes:
+            content:
+              blank: "を入力してください。"
+            image:
+              blank: "を入力してください。"
+            group:
+              required: "を入力してください。"
+            user:
+              required: "を入力してください。"

@@ -93,3 +93,7 @@ Things you may want to cover:
 
 - belongs_to: user
 - belongs_to: group
+
+## ToDoリスト
+
+1. メッセージ送信時にテキストも画像も未入力でバリデーションエラー発生させ、トップページに遷移してからグループを選択すると、瞬間的にエラーのフラッシュメッセージが表示される。

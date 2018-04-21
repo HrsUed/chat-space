@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
 
   def index
     # indexビューでform_forヘルパーの引数に使用する場合に定義が必要
-    # @message = Message.new
+    @message = Message.new
 
     # N+1問題を避けるためにincludes
     # どの程度解消されるのか試してみたい
