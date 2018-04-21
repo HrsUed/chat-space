@@ -19,9 +19,9 @@
       / = render @messages
 
     .form
-      / ネストされたコントローラの場合、インスタンス変数を用いて以下の通り親子の変数を指定する必要があるが、なぜが:messageで期待通りの動作となるため、一旦今の処理のままとする。
-      / form_for [@group, @message] do |f|
-      = form_for :message do |f|
+      / ネストされたコントローラの場合、インスタンス変数を用いて以下の通り親子の変数を指定する必要があるが、なぜか次の:messageで期待通りの動作となる
+      / form_for :message do |f|
+      = form_for [@group, @message] do |f|
         = f.text_field :content, class: "form__text", placeholder: "type a message"
         = f.label :image do
           = fa_icon("image lg", class: "icon")
