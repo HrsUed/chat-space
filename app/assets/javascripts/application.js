@@ -18,14 +18,12 @@
 // 画像サイズも考慮してスクロールするためにreadyではなくonload方式で記述
 // ただし、group/group_id/messages/indexを表示した際は実行されない
 // TODO: 上記のただし分を修正し、グループ選択時にも最下部にスクロールするように修正
-$(window).on("load", function() {
-  scrollToBottom(".messages");
-});
+// $(window).on("load", function() {
+//   scrollToBottom(".messages");
+// });
 
-function scrollToBottom(targetName) {
-  var targetSelector = $(targetName);
-  var scrollPosition = targetSelector.get(0).scrollHeight;
-  targetSelector.scrollTop(scrollPosition);
-  console.log(targetSelector.scrollTop());
-  // targetSelector.animate({scrollTop: scrollPosition}, 'fast');
-};
+// function scrollToBottom(targetName) {
+//   var targetSelector = $(targetName);
+//   var scrollPosition = targetSelector.get(0).scrollHeight;
+//   targetSelector.scrollTop(scrollPosition);
+// };
