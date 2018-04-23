@@ -41,9 +41,20 @@ $(function() {
     .done(function(data){
       var html = buildHTML(data);
       $(".messages").append(html);
+      scrollToBottom(".messages");
+      $(".form__text").val("");
     })
     .fail(function(){
       alert("メッセージの送信に失敗しました。");
+    })
+    .always(function(){
+      $(".form__submit").removeAttr("disabled");
     });
   });
 });
+
+function scrollToBottom(targetName) {
+  var targetSelector = $(targetName);
+  var scrollPosition = targetSelector.get(0).scrollHeight;
+  targetSelector.animate({scrollTop: scrollPosition});
+};
