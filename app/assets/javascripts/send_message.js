@@ -24,7 +24,6 @@ $(function() {
     return html;
   }
 
-
   $("#new_message").on("submit", function(e) {
     e.preventDefault();
     var formData = new FormData(this);
@@ -48,7 +47,11 @@ $(function() {
       alert("メッセージの送信に失敗しました。");
     })
     .always(function(){
+      // Rails5から追加となったsubmitのdisabled設定を解除
       $(".form__submit").removeAttr("disabled");
+
+      // 選択されたファイルのクリア
+      $("#message_image").val("");
     });
   });
 });
