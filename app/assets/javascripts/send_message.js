@@ -1,6 +1,9 @@
 $(function() {
   function buildHTML(message) {
-    var html =
+    const content_html = message.content == "" ? `` : `<div class="message-body__content">${message.content}</div>`
+    const image_html = message.image == null ? `` : `<div class="message-body__image"><img src="${message.image}"></div>`
+
+    const html =
 `
 <div class="message-header">
   <div class="message-header__user-name">
@@ -11,22 +14,12 @@ $(function() {
   </div>
 </div>
 <div class="message-body">
-`
-
-    html += (message.content != "") ?
-`
-<div class="message-body__content">
-  ${message.content}
-</div>
-`
-:
-`
-<div class="message-body__image">
-  <img src="${message.image}">
+  ${content_html}
+  ${image_html}
 </div>
 `
 
-    return html += `</div>`
+    return html;
   }
 
   $("#new_message").on("submit", function(e) {
