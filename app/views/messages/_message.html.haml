@@ -6,9 +6,9 @@
   .message-header__posted-date
     = message.created_at.in_time_zone("Asia/Tokyo").strftime("%Y/%m/%d %T")
 .message-body
-  .message-body__content
-    - if message.content
+  - if !message.content.empty?
+    .message-body__content
       = message.content
-  .message-body__image
-    - if message.image
+  - if !message.image.to_s.empty?
+    .message-body__image
       = image_tag message.image
