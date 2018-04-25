@@ -38,8 +38,10 @@ ${message.content}
     })
     .done(function(data){
       var html = buildHTML(data);
-      $(".messages").append(html);
-      scrollToBottom(".messages");
+      var targetSelector = $(".messages");
+
+      targetSelector.append(html);
+      targetSelector.animate({scrollTop: targetSelector.get(0).scrollHeight});
       $(".form__text").val("");
     })
     .fail(function(){
@@ -54,9 +56,3 @@ ${message.content}
     });
   });
 });
-
-function scrollToBottom(targetName) {
-  var targetSelector = $(targetName);
-  var scrollPosition = targetSelector.get(0).scrollHeight;
-  targetSelector.animate({scrollTop: scrollPosition});
-};
