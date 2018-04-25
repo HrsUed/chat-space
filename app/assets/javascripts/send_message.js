@@ -1,7 +1,8 @@
 $(function() {
   function buildHTML(message) {
     var html =
-`<div class="message-header">
+`
+<div class="message-header">
   <div class="message-header__user-name">
     ${message.user_name}
   </div>
@@ -9,16 +10,21 @@ $(function() {
     ${message.created_at}
   </div>
 </div>
-<div class="message-body">`
+<div class="message-body">
+`
 
     html += (message.content != "") ?
-`<div class="message-body__content">
-${message.content}
-</div>`
+`
+<div class="message-body__content">
+  ${message.content}
+</div>
+`
 :
-`<div class="message-body__image">
+`
+<div class="message-body__image">
   <img src="${message.image}">
-</div>`
+</div>
+`
 
     return html += `</div>`
   }
