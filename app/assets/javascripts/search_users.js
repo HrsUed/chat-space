@@ -1,4 +1,4 @@
-$(function() {
+$(document).on("turbolinks:load", function() {
   const resultSelector = $("#user-search-result");
   const userListSelector = $("#user-list");
 
@@ -18,7 +18,7 @@ $(function() {
 `
 <div class="chat-group-user clearfix">
   <p class="chat-group-user__name">${user_name}</p>
-  <a class="user-search-add chat-group-user__btn chat-group-user__btn--remove" data-user-id="${user_id}" data-user-name="${user_name}">削除</a>
+  <a class="user-search-add chat-group-user__btn chat-group-user__btn--remove" data-user-id="${user_id}">削除</a>
 </div>
 `
 
@@ -55,11 +55,15 @@ $(function() {
   });
 
   // ユーザの追加
-  resultSelector.on("click", ".user-search-add", function() {
+  resultSelector.on("click", ".chat-group-user__btn--add", function() {
     var user_name = $(this).attr("data-user-name");
     var user_id = $(this).attr("data-user-id");
     userListSelector.append(buildAddedUserHTML(user_name, user_id));
-    $("[data-user-id=" + user_id + "]").parent().get(0).remove();
+    $("[data-user-id=" + user_id + "]").parent().get(0).remove();  // 検索結果からの削除
   });
 
+  // ユーザの削除
+  userListSelector.on("click", ".chat-group-user__btn--remove", function() {
+    $(this).parent().get(0).remove();
+  });
 });
