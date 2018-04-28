@@ -1,7 +1,8 @@
 $(function() {
   const resultSelector = $("#user-search-result");
+  const userListSelector = $("#user-list");
 
-  function buildHTML(user) {
+  function buildSearchResultHTML(user) {
     var html =
 `
 <div class="chat-group-user clearfix">
@@ -12,10 +13,22 @@ $(function() {
     return html;
   }
 
+  function buildAddedUserHTML(user_name, user_id) {
+    var html =
+`
+<div class="chat-group-user clearfix">
+  <p class="chat-group-user__name">${user_name}</p>
+  <a class="user-search-add chat-group-user__btn chat-group-user__btn--remove" data-user-id="${user_id}" data-user-name="${user_name}">削除</a>
+</div>
+`
+
+    return html;
+  }
+
+
   // ユーザのインクリメンタルサーチ
   $(".edit_group").on("keyup", "#user-search-field", function() {
     var keyword = $("#user-search-field").val();
-    console.log(keyword);
 
     if (keyword == "") {
       resultSelector.empty();
@@ -31,7 +44,7 @@ $(function() {
         if (users.length > 0) {
           $("#user-search-result").empty();
           users.forEach(function(user) {
-            resultSelector.append(buildHTML(user));
+            resultSelector.append(buildSearchResultHTML(user));
           });
         }
       })
@@ -39,6 +52,14 @@ $(function() {
         alert("ユーザ検索に失敗しました。");
       });
     }
+  });
+
+  // ユーザの追加
+  resultSelector.on("click", ".user-search-add", function() {
+    var user_name = $(this).attr("data-user-name");
+    var user_id = $(this).attr("data-user-id");
+    userListSelector.append(buildAddedUserHTML(user_name, user_id));
+    $("[data-user-id=" + user_id + "]").parent().get(0).remove();
   });
 
 });
