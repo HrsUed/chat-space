@@ -19,6 +19,3 @@
 # Ignore all uploaded image file.
 /public/uploads/*
 /public/images/*
-
-# Ignore scripts for test
-/db/seeds.rb
