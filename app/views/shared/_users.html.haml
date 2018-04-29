@@ -1,0 +1,6 @@
+.chat-group-user.clearfix
+  = hidden_field_tag "group[user_ids][]", user.id, id: nil
+  %p.chat-group-user__name
+    = user.name
+  %a{ class: "user-search-add chat-group-user__btn chat-group-user__btn--remove", "data-user-id": "#{user.id}", "data-user-name": "#{user.name}" }
+    削除

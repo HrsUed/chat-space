@@ -1,4 +1,4 @@
-$(function() {
+$(document).on("turbolinks:load", function() {
   function buildHTML(message) {
     const content_html = message.content == "" ? `` : `<div class="message-body__content">${message.content}</div>`
     const image_html = message.image == null ? `` : `<div class="message-body__image"><img src="${message.image}"></div>`
