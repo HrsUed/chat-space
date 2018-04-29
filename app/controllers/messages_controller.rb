@@ -8,6 +8,11 @@ class MessagesController < ApplicationController
     # N+1問題を避けるためにincludes
     # どの程度解消されるのか試してみたい
     @messages = @group.messages.includes(:user)
+
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def create
