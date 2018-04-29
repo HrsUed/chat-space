@@ -28,7 +28,7 @@ $(document).on("turbolinks:load", function() {
 
 
   // ユーザのインクリメンタルサーチ
-  $(".edit_group").on("keyup", "#user-search-field", function() {
+  $("#user-search-field").on("keyup", function() {
     var keyword = $("#user-search-field").val();
 
     if (keyword == "") {
