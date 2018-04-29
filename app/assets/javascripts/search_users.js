@@ -3,11 +3,14 @@ $(document).on("turbolinks:load", function() {
   const userListSelector = $("#user-list");
 
   function buildSearchResultHTML(user) {
+    var user_name = (user == null) ? `一致するユーザはありません。` : `${user.name}`;
+    var add_link = (user == null) ? `` : `<a class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${user.id}" data-user-name="${user.name}">追加</a>`;
+
     var html =
 `
 <div class="chat-group-user clearfix">
-  <p class="chat-group-user__name">${user.name}</p>
-  <a class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${user.id}" data-user-name="${user.name}">追加</a>
+  <p class="chat-group-user__name">${user_name}</p>
+  ${add_link}
 </div>
 `
     return html;
@@ -47,6 +50,9 @@ $(document).on("turbolinks:load", function() {
           users.forEach(function(user) {
             resultSelector.append(buildSearchResultHTML(user));
           });
+        } else {
+          resultSelector.empty();
+          resultSelector.append(buildSearchResultHTML());
         }
       })
       .fail(function(){
