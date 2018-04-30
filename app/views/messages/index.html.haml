@@ -14,13 +14,8 @@
           = link_to "Edit", edit_group_path(@group)
     .messages
       = render partial: "message", collection: @messages
-      / 上記のレンダリングは、:collectionに指定したインスタンス変数の単数形と部分テンプレート名が一致すれば、以下のように省略して記載することができる。
-      / こちらの記載の方が処理速度が向上するとのこと。なお、この記載方法の際は、部分テンプレート側ではeach文は削除しておくこと。
-      / = render @messages
 
     .form
-      / ネストされたコントローラの場合、インスタンス変数を用いて以下の通り親子の変数を指定する必要があるが、なぜか次の:messageで期待通りの動作となる
-      / form_for :message do |f|
       = form_for [@group, @message] do |f|
         = f.text_field :content, class: "form__text", placeholder: "type a message"
         = f.label :image do
