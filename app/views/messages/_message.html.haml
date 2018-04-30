@@ -5,7 +5,7 @@
     .message-header__user-name
       = message.user.name
     .message-header__posted-date
-      = message.created_at.in_time_zone("Asia/Tokyo").strftime("%Y/%m/%d %T")
+      = message.created_at
   .message-body
     - if !message.content.empty?
       .message-body__content
