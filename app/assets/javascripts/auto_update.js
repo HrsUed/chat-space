@@ -1,6 +1,5 @@
 $(function() {
   function updateMessages() {
-    // console.log(new Date().getSeconds());
 
     if ($("div").hasClass("messages")) {
       var targetSelector = $(".messages");
@@ -26,6 +25,6 @@ $(function() {
     }
   }
 
-  setInterval(updateMessages, 2000);
+  setInterval(updateMessages, 5000);
 
 });
