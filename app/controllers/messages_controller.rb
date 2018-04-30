@@ -9,6 +9,8 @@ class MessagesController < ApplicationController
     # どの程度解消されるのか試してみたい
     @messages = @group.messages.includes(:user)
 
+    @additional_messages = Message.get_messages_after_last_update(params[:latest_message_id])
+
     respond_to do |format|
       format.html
       format.json
