@@ -4,7 +4,7 @@ function buildMessageHTML(message) {
 
   const html =
 `
-<div id="message-id-${message.id}">
+<div class="message" data-message-id="${message.id}">
   <div class="message-header">
     <div class="message-header__user-name">
       ${message.user_name}

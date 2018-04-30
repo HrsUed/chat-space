@@ -1,6 +1,4 @@
-/ renderのオプションで部分テンプレートの繰り返し処理をする場合はeach不要。
-/ - @messages.each do |message|
-%div{ id: "message-id-#{message.id}" }
+.message{ "data-message-id": "#{message.id}"}
   .message-header
     .message-header__user-name
       = message.user.name
