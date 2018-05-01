@@ -1,14 +1,13 @@
-/ renderのオプションで部分テンプレートの繰り返し処理をする場合はeach不要。
-/ - @messages.each do |message|
-.message-header
-  .message-header__user-name
-    = message.user.name
-  .message-header__posted-date
-    = message.created_at.in_time_zone("Asia/Tokyo").strftime("%Y/%m/%d %T")
-.message-body
-  - if !message.content.empty?
-    .message-body__content
-      = message.content
-  - if !message.image.to_s.empty?
-    .message-body__image
-      = image_tag message.image
+.message{ "data-message-id": "#{message.id}"}
+  .message-header
+    .message-header__user-name
+      = message.user.name
+    .message-header__posted-date
+      = message.created_at
+  .message-body
+    - if !message.content.empty?
+      .message-body__content
+        = message.content
+    - if !message.image.to_s.empty?
+      .message-body__image
+        = image_tag message.image
