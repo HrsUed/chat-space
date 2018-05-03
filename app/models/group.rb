@@ -22,4 +22,10 @@ class Group < ApplicationRecord
     # (1)lastメソッドによって最後のレコードを取得
     # (2)recordsメソッドによってメッセージモデルオブジェクトの配列を取得し、index=0のオブジェクトのcontentを取得
   end
+
+  def get_messages_after_last_update(message_id)
+    self.messages.where("id > ?", message_id)
+  end
+
+
 end
