@@ -6,7 +6,7 @@
         #{@group.errors.count}件のエラーが発生しました。
         - @group.errors.full_messages.each do |msg|
           %ul
-            %li= msg[/(?<= ).+/]
+            %li= trim_column_name_for_validation_error_message(msg)
   = form_for @group do |f|
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
