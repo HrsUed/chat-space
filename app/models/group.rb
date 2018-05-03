@@ -8,13 +8,10 @@ class Group < ApplicationRecord
 
   def get_latest_message
 
-    return "まだメッセージはありません。" if self.messages.size == 0
+    latest_message = (self.messages.size == 0) ? "まだメッセージはありません。" : self.messages.last.content
 
-    latest_message = self.messages.last.content
+    latest_message = "画像が投稿されています" if latest_message == ""
 
-    return "画像が投稿されています" if latest_message == ""
-
-    # return latest_message[0...35] + "..."
     return latest_message
 
     # Tips
@@ -25,4 +22,10 @@ class Group < ApplicationRecord
     # (1)lastメソッドによって最後のレコードを取得
     # (2)recordsメソッドによってメッセージモデルオブジェクトの配列を取得し、index=0のオブジェクトのcontentを取得
   end
+
+  def get_messages_after_last_update(message_id)
+    self.messages.where("id > ?", message_id)
+  end
+
+
 end

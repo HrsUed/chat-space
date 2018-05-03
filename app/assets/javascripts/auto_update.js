@@ -17,7 +17,9 @@ $(function() {
         messages.forEach(function(message) {
           targetSelector.append(buildMessageHTML(message));
         });
-        targetSelector.animate({scrollTop: targetSelector.get(0).scrollHeight});
+        if (messages.length > 0) {
+          targetSelector.animate({scrollTop: targetSelector.get(0).scrollHeight});
+        }
       })
       .fail(function() {
 

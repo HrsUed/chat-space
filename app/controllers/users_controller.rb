@@ -10,7 +10,6 @@ class UsersController < ApplicationController
 
   end
 
-
   def edit
   end
 
@@ -24,6 +23,7 @@ class UsersController < ApplicationController
   end
 
   private
+
   def users_params
     params.require(:users).permit(:name, :email)
   end
