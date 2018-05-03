@@ -9,11 +9,14 @@ class MessagesController < ApplicationController
     # どの程度解消されるのか試してみたい
     @messages = @group.messages.includes(:user)
 
-    @additional_messages = @group.get_messages_after_last_update(params[:latest_message_id])
+    @members = @group.users.inject([]) { |members, user| members << user.name }
+
 
     respond_to do |format|
       format.html
-      format.json
+      format.json {
+        @additional_messages = @group.get_messages_after_last_update(params[:latest_message_id])
+      }
     end
   end
 
@@ -44,7 +47,6 @@ class MessagesController < ApplicationController
 
   def set_group
     @group = Group.find(params[:group_id])
-    @members = @group.users.inject([]) { |members, user| members << user.name }
   end
 
   def message_params
