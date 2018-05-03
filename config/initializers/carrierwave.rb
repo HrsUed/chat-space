@@ -11,6 +11,12 @@ CarrierWave.configure do |config|
     region: 'ap-northeast-1'
   }
 
-  config.fog_directory  = ENV["AWS_S3_CHATSPACE_BUCKET_NAME"]
-  config.asset_host = ENV["AWS_S3_CHATSPACE_ASSET_HOST"]
+  case Rails.env
+  when 'development', 'test'
+    config.fog_directory = "devel-chatspace-upload-images"
+    config.asset_host = "https://s3-ap-northeast-1.amazonaws.com/devel-chatspace-upload-images"
+  when 'production'
+    config.fog_directory = "chat-space-upload-images"
+    config.asset_host = "https://s3-ap-northeast-1.amazonaws.com/chat-space-upload-images"
+  end
 end
