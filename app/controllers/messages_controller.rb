@@ -11,7 +11,6 @@ class MessagesController < ApplicationController
 
     @members = @group.users.inject([]) { |members, user| members << user.name }
 
-
     respond_to do |format|
       format.html
       format.json {
