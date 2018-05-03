@@ -5,9 +5,9 @@
     .message-header__posted-date
       = message.created_at
   .message-body
-    - if !message.content.empty?
+    - if message.content?
       .message-body__content
         = message.content
-    - if !message.image.to_s.empty?
+    - if message.image?
       .message-body__image
         = image_tag message.image
